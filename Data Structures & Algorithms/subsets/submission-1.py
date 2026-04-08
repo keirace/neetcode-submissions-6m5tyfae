@@ -1,0 +1,18 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        def backtrack(i, sol):
+            if i == len(nums):
+                res.append(sol[:])
+                return
+
+            # skip
+            backtrack(i+1, sol)
+
+            # choose
+            sol.append(nums[i])
+            backtrack(i+1, sol)
+            sol.pop()
+
+        res = []
+        backtrack(0, [])
+        return res
